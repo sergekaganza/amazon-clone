@@ -1,6 +1,7 @@
 import React from "react";
 import "./Product.css";
 import { useStateValue } from "./StateProvider";
+import StarBorderIcon from '@material-ui/icons/StarBorder'
 
 function Product({ id, title, image, price, rating }) {
   const [{state}, dispatch] = useStateValue();
@@ -26,6 +27,9 @@ function Product({ id, title, image, price, rating }) {
           <small>$</small>
           <strong>{price}</strong>
         </p>
+   <p><StarBorderIcon /></p>
+   
+        
    
       </div>
       <img className="product__image" src={image} alt={image} />      

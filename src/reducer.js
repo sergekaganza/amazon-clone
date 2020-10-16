@@ -1,21 +1,6 @@
 
 export const initialState = {
-basket: [
-    {
-
-id: "",
-title: "",
-price: "",
-rating:"" ,
-image: ""
-// {
-// id: "123456780",
-// title: "Samsung TV",
-// price: 1051.05,
-// rating: 5,
-// image: TV
-// }
-}],
+basket: [],
 user: null,
 };
 export const getBasketTotal = basket =>
@@ -32,11 +17,15 @@ case "ADD_TO_BASKET":
 // Logic for adding item to basket
 return { ...state, basket: [...state.basket, action.item] };
 case "REMOVE_FROM_BASKET":
-// Logic for Removing item from basket
+// Logic for Removing item from basket...
+
+// We cloned the basket
 let newBasket = [...state.basket];
+// We check to see if product exists,
 const index = state.basket.findIndex(
-basketItem => basketItem.id === action.id
+(basketItem) => basketItem.id === action.id
 );
+
 if (index >= 0) {
 // item exists in basket
 newBasket.splice(index, 1);
@@ -45,7 +34,10 @@ console.warn(
 `Can't remove product (id: ${action.id}) as it is not in the basket`
 );
 }
-return { ...state, basket: newBasket };
+return { 
+    ...state, 
+    basket: newBasket,
+};
 default:
 return state;
 }
